@@ -50,7 +50,7 @@ public class MemberController {
 			newCookie.setMaxAge(0);
 			response.addCookie(newCookie);
 			model.addAttribute("marketing", terms);
-			return "/member/join";
+			return "member/join";
 		} else {
 			return "redirect:/";
 		}

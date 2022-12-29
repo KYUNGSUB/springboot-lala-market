@@ -21,7 +21,7 @@ public class CommonController {
 	@GetMapping("/aindex")
 	public String aindex() {
 		log.info("aindex...");
-		return "/ahome";
+		return "ahome";
 	}
 	
 	@GetMapping("/customLogout")		// Logout 폼 요청
