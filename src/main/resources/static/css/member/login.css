@@ -1,0 +1,46 @@
+@charset "UTF-8";
+#container section {
+	width: 500px;
+	margin: 100px auto;
+}
+#leftSec {
+	float: left;
+	position: relative;
+}
+#rightSec {
+	float: right;
+	height: 90px;
+	line-height: 2;
+	border: 1px solid black;
+	padding: 0px 10px;
+	margin: 25px 0;
+	font-size: 0.8em;
+	font-size: 0.8rem;
+}
+#leftSec p:nth-child(1) {
+	width: 260px;
+	padding: 5px;
+	border-bottom: 1px solid black;
+	margin-bottom: 15px;
+}
+#leftSec p > span {
+	font-weight: bold;
+	margin-right: 10px;
+}
+#leftSec input {
+	font-size: 1em;
+	padding: 5px;
+}
+#submitBtn {
+	position: absolute;
+	right: 0px;
+	top: 32%;
+	width: 66px;
+	height: 66px;
+	padding: 10px;
+	border-radius: 10px;
+}
+#pwd {
+	margin-top: 5px;
+	margin-bottom: 10px;
+}

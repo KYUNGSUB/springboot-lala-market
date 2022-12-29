@@ -1,0 +1,76 @@
+@charset "UTF-8";
+#main-wrap {
+	margin-top: 5px;
+}
+#main-wrap h4 {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+#main-wrap > aside {
+	float: left;
+	width: 14%;
+	border: 1px solid black;
+	padding: 5px;
+}
+#main-wrap > aside ul {
+	line-height: 1.4;
+}
+#main-wrap > aside li {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+#main-wrap > aside a {
+	font-size: 0.9em;
+	font-size: 0.9rem;
+	margin-left: -10px;
+}
+#main-wrap > section {
+	float: right;
+	width: 83%;
+	padding: 5px;
+	margin-left: 5px;
+}
+#main-wrap > section > p {
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	font-size: 0.9rem;
+}
+#main-wrap > section > h2 {
+	font-weight: bold;
+	font-size: 1.1em;
+	font-size: 1.1rem;
+}
+#main-wrap > section h3 {
+	font-weight: bold;
+	font-size: 1.0em;
+	font-size: 1.0rem;
+	margin-top: 15px;
+}
+#main-wrap > section > div {
+	margin-top: 20px;
+}
+#main-sec .right {
+	float: right;
+	margin-left: 10px;
+}
+#newTerms {
+	display: none;
+	line-height: 1.5;
+}
+.listArea {
+	line-height: 1.5;
+}
+.listArea input {
+	padding: 5px;
+}
+.listArea input[name='title'] {
+	width: 100%;
+}
+.listArea textarea {
+	padding: 5px;
+	width: 100%;
+}
+.listArea p {
+	margin-top: 10px;
+	text-align: center;
+}

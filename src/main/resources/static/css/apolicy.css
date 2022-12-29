@@ -1,0 +1,118 @@
+@charset "UTF-8";
+#main-wrap {
+	margin-top: 5px;
+}
+#main-wrap h4 {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+#main-wrap > aside {
+	float: left;
+	width: 14%;
+	border: 1px solid black;
+	padding: 5px;
+}
+#main-wrap > aside ul {
+	line-height: 1.4;
+}
+#main-wrap > aside li {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+#main-wrap > aside a {
+	font-size: 0.9em;
+	font-size: 0.9rem;
+	margin-left: -10px;
+}
+#main-wrap > section {
+	float: right;
+	width: 83%;
+	padding: 5px;
+	margin-left: 5px;
+}
+#main-sec .p1 {
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	font-size: 0.9rem;
+}
+#main-wrap > section > h2 {
+	font-weight: bold;
+	font-size: 1.1em;
+	font-size: 1.1rem;
+}
+#main-wrap > section h3 {
+	font-weight: bold;
+	font-size: 1.0em;
+	font-size: 1.0rem;
+	margin-top: 15px;
+}
+#main-sec .p2 {
+	margin-top: 10px;
+	margin-left: 20px;
+}
+#address {
+	display: inline-block;
+	margin-left: 20px;
+	margin-right: 10px;
+	width: 350px;
+	border: 1px solid black;
+}
+input[name='delete'] {
+	margin-left: 40px;
+}
+input[name='add'] {
+	margin-left: 100px;
+}
+/* Style the tab */
+.tab1, .tab2 {
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab1 input, .tab2 input {
+	width: 100px;
+  background-color: #f1f1f1;
+  float: left;
+  border: 1px solid black;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab1 input:hover, .tab2 input:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab1 input.active, .tab2 input.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent1, .tabcontent2 {
+  display: none;
+  padding: 6px 6px;
+  border: 1px solid #ccc;
+  border-top: none;
+  height: 250px;
+}
+form p:last-of-type {
+	text-align: right;
+	margin: 10px 0;
+}
+#addressArea {
+	margin-left: 40px;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	width: 600px;
+	height: 200px;
+	border: 1px solid black;
+}
+#addressArea span {
+	display: block;
+	margin-left: 10px;
+	margin-top: 5px;
+}

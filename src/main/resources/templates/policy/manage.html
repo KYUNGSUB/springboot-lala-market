@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/abasic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+<link rel="stylesheet" th:href="@{/css/apolicy.css}">
+<script type="text/javascript" th:src="@{/smarteditor/js/service/HuskyEZCreator.js}" charset="utf-8"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" th:src="@{/js/apolicy.js}"></script>
+<div id="main-wrap">
+	<aside>
+		<h4>상품 관리</h4>
+		<ul>
+			<li><a href="1">약관</a></li>
+			<li><a href="2">정책</a></li>
+			<li><a href="3">결제 방법</a></li>
+			<li><a href="4">메뉴 접근 권한</a></li>
+		</ul>
+	</aside>
+	<section id="main-sec">
+		<p class="p1">| 기본 정책 관리 > 정책 관리</p>
+		<h2>| 정책 관리</h2>
+		<hr>
+	<form action="manage" method="post">
+		<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+		<h3>| 배송 정책</h3>
+	<th:block th:if="${#lists.isEmpty(list)}">
+		<p class="p2">- 기본 배송료 : <input type="text" name="shopping">&nbsp;원</p>
+		<p class="p2">- 무료 배송 : &nbsp;&nbsp;&nbsp;<input type="text" name="free">&nbsp;원 이상 구매 시 무료 배송</p>
+		<p class="p2">- 배송 불가 지역</p>
+		<p class="p2"><span id="address">주소가 표시됩니다</span><input type="button" name="search" value="우편번호 검색"><input type="button" name="add" value="추가"></p>
+		<div id="addressArea"></div>
+		<input type="button" name="delete" value="선택 삭제"><br>
+		<h3>| 포인트 정책</h3>
+		<p class="p2">- 가입 포인트 : 회원 가입 시 <input type="text" name="subscription">&nbsp;원 적립</p>
+		<p class="p2">- 구매 포인트 : 구매 금액의 <input type="text" name="pursuit">&nbsp;% 적립</p>
+		<h3>| 주문 취소 정책</h3>
+		<p class="p2">- 무통장 입금 시 : 무통장 임금 주문 후 <input type="text" name="period">&nbsp;일간 입금하지 않을 시 주문 자동 취소</p>
+		<h3>| 공통 배송 안내 등록</h3>
+		<!-- Tab links -->
+		<div class="tab1">
+			<input type="button" class="tablinks1" data-oper="dPC" value="PC">
+			<input type="button" class="tablinks1" data-oper="dMobile" value="Mobile">
+		</div>
+		<!-- Tab content -->
+		<div id="dPC" class="tabcontent1">
+			<textarea name="dpc" id="dpc" rows="10" cols="100" style="width: 820px; height: 200px; display: none"></textarea>
+		</div>
+		<div id="dMobile" class="tabcontent1">
+			<textarea name="dmobile" id="dmobile" rows="10" cols="100" style="width: 820px; height: 200px; display: none"></textarea>
+		</div>
+		<h3>| 공통 교환 및 반품 안내 등록</h3>
+		<!-- Tab links -->
+		<div class="tab2">
+			<input type="button" class="tablinks2" data-oper="ePC" value="PC">
+			<input type="button" class="tablinks2" data-oper="eMobile" value="Mobile">
+		</div>
+		<!-- Tab content -->
+		<div id="ePC" class="tabcontent2">
+			<textarea name="epc" id="epc" rows="10" cols="100" style="width: 820px; height: 200px; display: none"></textarea>
+		</div>
+		<div id="eMobile" class="tabcontent2">
+			<textarea name="emobile" id="emobile" rows="10" cols="100" style="width: 820px; height: 200px; display: none"></textarea>
+		</div>
+		<p class="p2"><input type="submit" data-oper="store" value="저장">&nbsp;<input type="submit" data-oper="cancel" value="취소"></p>
+	</th:block>
+	<th:block th:if="${!#lists.isEmpty(list)}">
+		<p class="p2">- 기본 배송료 : <input type="text" name="shopping" th:value="${list[0].value}">&nbsp;원</p>
+		<p class="p2">- 무료 배송 : &nbsp;&nbsp;&nbsp;<input type="text" name="free" th:value="${list[1].value}">&nbsp;원 이상 구매 시 무료 배송</p>
+		<p class="p2">- 배송 불가 지역</p>
+		<p class="p2"><span id="address">주소가 표시됩니다</span><input type="button" name="search" value="우편번호 검색"><input type="button" name="add" value="추가"></p>
+		<div id="addressArea">
+	<th:block th:if="${list.size() > 9}">
+			<span th:each="index : ${#numbers.sequence(9, list.size() - 1)}">
+				<input type="checkbox" name="area">
+				<input type="hidden" name="post" th:value="${list[index].value}">&nbsp;[[${list[index].value}]]
+			</span>
+	</th:block>
+		</div>
+		<input type="button" name="delete" value="선택 삭제"><br>
+		<h3>| 포인트 정책</h3>
+		<p class="p2">- 가입 포인트 : 회원 가입 시 <input type="text" name="subscription" th:value="${list[2].value}">&nbsp;원 적립</p>
+		<p class="p2">- 구매 포인트 : 구매 금액의 <input type="text" name="pursuit" th:value="${list[3].value}">&nbsp;% 적립</p>
+		<h3>| 주문 취소 정책</h3>
+		<p class="p2">- 무통장 입금 시 : 무통장 임금 주문 후 <input type="text" name="period" th:value="${list[4].value}">&nbsp;일간 입금하지 않을 시 주문 자동 취소</p>
+		<h3>| 공통 배송 안내 등록</h3>
+		<!-- Tab links -->
+		<div class="tab1">
+			<input type="button" class="tablinks1" data-oper="dPC" value="PC">
+			<input type="button" class="tablinks1" data-oper="dMobile" value="Mobile">
+		</div>
+		<!-- Tab content -->
+		<div id="dPC" class="tabcontent1">
+			<textarea name="dpc" id="dpc" rows="10" cols="100" style="width: 820px; height: 200px; display: none">[[${list[5].value}]]</textarea>
+		</div>
+		<div id="dMobile" class="tabcontent1">
+			<textarea name="dmobile" id="dmobile" rows="10" cols="100" style="width: 820px; height: 200px; display: none">[[${list[6].value}]]</textarea>
+		</div>
+		<h3>| 공통 교환 및 반품 안내 등록</h3>
+		<!-- Tab links -->
+		<div class="tab2">
+			<input type="button" class="tablinks2" data-oper="ePC" value="PC">
+			<input type="button" class="tablinks2" data-oper="eMobile" value="Mobile">
+		</div>
+		<!-- Tab content -->
+		<div id="ePC" class="tabcontent2">
+			<textarea name="epc" id="epc" rows="10" cols="100" style="width: 820px; height: 200px; display: none">[[${list[7].value}]]</textarea>
+		</div>
+		<div id="eMobile" class="tabcontent2">
+			<textarea name="emobile" id="emobile" rows="10" cols="100" style="width: 820px; height: 200px; display: none">[[${list[8].value}]]</textarea>
+		</div>
+		<p class="p2"><input type="submit" data-oper="store" value="저장">&nbsp;<input type="submit" data-oper="cancel" value="취소"></p>
+	</th:block>
+	</form>
+	</section>
+</div>
+    </th:block>
+</th:block>

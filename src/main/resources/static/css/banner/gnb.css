@@ -1,0 +1,107 @@
+@charset "UTF-8";
+#main-wrap {
+	margin-top: 5px;
+}
+#main-wrap h4 {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+#main-wrap > aside {
+	float: left;
+	width: 14%;
+	border: 1px solid black;
+	padding: 5px;
+}
+#main-wrap > aside ul {
+	line-height: 1.4;
+}
+#main-wrap > aside li {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+#main-wrap > aside a {
+	font-size: 0.9em;
+	font-size: 0.9rem;
+	margin-left: -10px;
+}
+#main-wrap > section {
+	float: right;
+	width: 83%;
+	padding: 5px;
+	margin-left: 5px;
+}
+#main-wrap > section > p {
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	font-size: 0.9rem;
+}
+#main-wrap > section > h2 {
+	font-weight: bold;
+	font-size: 1.1em;
+	font-size: 1.1rem;
+}
+#main-wrap > section > h3 {
+	font-weight: bold;
+	font-size: 1.0em;
+	font-size: 1.0rem;
+	margin-top: 15px;
+}
+#main-wrap > section > div {
+	margin-top: 20px;
+}
+#main-wrap > section ul {
+	display: flex;
+	flex-flow: row nowrap;
+	padding-left: 20px;
+	border-bottom: 1px solid black;
+}
+#banner-add button {
+	float: right;
+}
+#banner-area {
+	clear: both;
+}
+#banner-area #new-banner {
+	display: none;
+}
+#banner-area table {
+	width: 100%;
+}
+#banner-area td {
+	padding: 3px 5px;
+}
+#banner-area td > span {
+	display: block;
+	text-align: center;
+	line-height: 100px;
+	width: 100%;
+	height: 100px;
+	border: 1px solid black;
+}
+#banner-area td.first {
+	text-align: right;
+	width: 100px;
+}
+#banner-area td.first:nth-child(1) {
+	vertical-align: top;
+}
+#banner-btn {
+	text-align: right;
+}
+#banner-btn button {
+	margin-left: 20px;
+}
+#main-wrap > section ul li {
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px 20px;
+}
+#main-wrap > section ul li:last-child {
+	border-right: 1px solid black;
+}
+.infoClass {
+	margin-top:20px;
+	padding: 5px;
+	border: 1px dotted black;
+}

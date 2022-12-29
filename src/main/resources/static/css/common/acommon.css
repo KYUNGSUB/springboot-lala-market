@@ -1,0 +1,160 @@
+@charset "UTF-8";
+#wrap {
+	max-width: 1200px;
+	width: 90%;
+	margin: 0 auto;
+}
+body {
+	box-sizing: border-box;
+}
+#logo-wrap {
+	float: left;
+	padding: 5px 0;
+}
+#logo-wrap a {
+	font-size: 1.5em;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+#subMenu {
+	float: right;
+	padding: 5px 0;
+}
+#subMenu button {
+	background-color: #eee;
+	border: 1px solid black;
+	border-radius: 3px;
+}
+#subMenu button:last-child {
+	background: none;
+}
+#gnb {
+	clear: both;
+}
+#gnb > ul {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+}
+#gnb > ul > li {
+	flex: 1 1 auto;
+	border-left: 1px solid black;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+	text-align: center;
+	position: relative;
+}
+#gnb > ul > li a:hover {
+	color: orange;
+}
+#gnb > ul > li:last-child {
+	border-right: 1px solid black;
+}
+#gnb ul ul {
+	display: none;
+	position: absolute;
+	top: 28px;
+	line-height: 1.3;
+	padding: 5px;
+	border: 1px solid black;
+	border-top: none;
+	border-radius: 0 0 7px 7px;
+}
+#gnb ul ul li {
+	text-align: left;
+}
+#gnb ul .m1 {
+	left: 0;
+	width: 115px;
+}
+#gnb ul .m2 {
+	left: -15px;
+	width: 160px;
+}
+#gnb ul .m3 {
+	left: -5px;
+	width: 125px;
+}
+#gnb ul .m4 {
+	left: -2px;
+	width: 120px;
+}
+#gnb ul .m5 {
+	left: -5px;
+	width: 125px;
+}
+#gnb ul .m6 {
+	left: -12px;
+	width: 140px;
+}
+#gnb ul .m7 {
+	left: -30px;
+	width: 135px;
+}
+#gnb ul .m8 {
+	left: 2px;
+	width: 110px;
+}
+#container {
+	min-height: 600px;
+}
+#footer-wrap {
+	clear: both;
+	display: flex;
+	flex-flow: column nowrap;
+	height: 360px;
+	border-top: 1px solid black
+}
+.footer-1 {
+	position: relative;
+	top: 20px;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	line-height: 1.5;
+	font-size: 0.8em;
+	font-size: 0.8rem;
+	flex-direction: row;
+}
+.footer-1 > div {
+	display: inline-block;
+}
+.footer-1 div:nth-child(1) {
+	width: 30%;
+}
+.footer-1 div:nth-child(2) {
+	width: 30%;
+}
+.footer-1 div:nth-child(3) {
+	width: 40%;
+}
+.footer-11 h1 {
+	font-size: 1.6em;
+	font-size: 1.6rem;
+	font-weight: bold;
+	text-align: center;
+}
+.footer-11 h2 {
+	font-size: 1.2em;
+	font-size: 1.2rem;
+	font-weight: bold;
+	text-align: center;
+}
+.footer-12 a {
+	padding: 5px;
+	border: 1px solid black;
+}
+.footer-12 p:last-child {
+	font-size: 0.9em;
+	font-size: 0.9rem;
+	margin-top: 10px;
+}
+.footer-2 {
+	position: relative;
+	top: 30px;
+	margin-left: 30%;
+	height: 60px;
+	font-size: 0.8em;
+	font-size: 0.8rem;
+}

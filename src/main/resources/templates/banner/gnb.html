@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/abasic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+<link rel="stylesheet" th:href="@{/css/banner/gnb.css}">
+<script type="text/javascript" th:src="@{/js/banner.js}"></script>
+<div id="main-wrap">
+	<aside>
+		<h4>배너 관리</h4>
+		<ul>
+			<li><a href="1">GNB</a></li>
+			<li><a href="2">메인</a></li>
+			<li><a href="3">스타일 숍 리스트</a></li>
+			<li><a href="4">오픈 숍 리스트</a></li>
+			<li><a href="5">서브메뉴</a></li>
+			<li><a href="6">커뮤니티 리스트</a></li>
+			<li><a href="7">고객센터 상단</a></li>
+			<li><a href="8">상품 주문완료</a></li>
+		</ul>
+	</aside>
+	<section id="main-sec">
+		<p>| 배너관리 > GNB</p>
+		<h2>GNB 배너 관리</h2>
+		<div id="banner-kind">
+			<ul>
+				<li><a href="1">상단 배너</a></li>
+				<li><a href="2">오른쪽 배너</a></li>
+				<li><a href="3">왼쪽 배너</a></li>
+				<li><a href="4">하단 배너</a></li>
+			</ul>
+		</div>
+		<div id="expose-method">
+			<span>| 노출 방식</span>
+			<th:block th:if="${banner != null}">
+			<th:block th:if="${banner.location == 1}">
+				<label><input type="radio" name="location" value="slide" checked="checked">슬라이드</label>
+				<label><input type="radio" name="location" value="random">랜덤</label>
+				<label><input type="radio" name="location" value="login">로그인 전/후</label>
+				<label><input type="radio" name="location" value="no">노출하지 않음</label>
+			</th:block>
+			<th:block th:if="${banner.location == 2}">
+				<label><input type="radio" name="location" value="slide">슬라이드</label>
+				<label><input type="radio" name="location" value="random" checked="checked">랜덤</label>
+				<label><input type="radio" name="location" value="login">로그인 전/후</label>
+				<label><input type="radio" name="location" value="no">노출하지 않음</label>
+			</th:block>
+			<th:block th:if="${banner.location == 3}">
+						<label><input type="radio" name="location" value="slide">슬라이드</label>
+						<label><input type="radio" name="location" value="random">랜덤</label>
+						<label><input type="radio" name="location" value="login" checked="checked">로그인 전/후</label>
+						<label><input type="radio" name="location" value="no">노출하지 않음</label>
+			</th:block>
+			<th:block th:if="${banner.location == 4}">
+				<label><input type="radio" name="location" value="slide">슬라이드</label>
+				<label><input type="radio" name="location" value="random">랜덤</label>
+				<label><input type="radio" name="location" value="login">로그인 전/후</label>
+				<label><input type="radio" name="location" value="no" checked="checked">노출하지 않음</label>
+			</th:block>
+			</th:block>
+			<th:block th:if="${banner == null}">
+				<label><input type="radio" name="location" value="slide">슬라이드</label>
+				<label><input type="radio" name="location" value="random">랜덤</label>
+				<label><input type="radio" name="location" value="login">로그인 전/후</label>
+				<label><input type="radio" name="location" value="no">노출하지 않음</label>
+			</th:block>
+		</div>
+		<div id="banner-add">
+			<span>| 등록된 배너</span><button id="addBtn">배너 추가</button>
+		</div>
+		<div id="banner-area">
+			<div id="new-banner">
+				<form action="#" method="post" enctype="multipart/form-data">
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+					<input type="hidden" id="kind" name="kind" th:value="${param.kind}">
+					<input type="hidden" id="position" name="position" th:value="${param.position}">
+					<table>
+						<tr>
+							<td class="first"><input id="infoCheck" type="checkbox" name="infoCheck" value="new"></td>
+							<td colspan="2"><span>등록된 배너가 없습니다.</span></td>
+						</tr>
+						<tr>
+							<td class="first">*배너 이미지</td>
+							<td colspan="2"><input type="file" name="bannerImg"></td>
+						</tr>
+						<tr>
+							<td class="first">링크 주소</td>
+							<td><input type="text" size="60" name="url">
+							<td>
+								<label><input type="radio" name="target" value="blank">새 창(blank)</label>
+								<label><input type="radio" name="target" value="self">본 창(self)</label>
+							</td>
+						</tr>
+						<tr>
+							<td class="first">대체 텍스트</td>
+							<td><input type="text" size="60" name="alt"></td>
+							<td id="loginArea" style="display: none;">
+								<select name="login">
+									<option value="default"></option>
+									<option value="before">로그인 전</option>
+									<option value="after">로그인 후</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<hr>
+		<th:block th:if="${banner != null}">
+			<th:block th:each="info, status : ${banner.mappingList}">
+			<div th:class="'infoClass ic' + ${status.index}">
+				<form action="#" method="post" enctype="multipart/form-data">
+					<input type="hidden" id="csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+					<input type="hidden" id="kind" name="kind" th:value="${param.kind}">
+					<input type="hidden" id="position" name="position" th:value="${param.position}">
+					<input type="hidden" id="bid" name="bid" th:value="${info.bid}">
+					<input type="hidden" id="info_id" name="info_id" th:value="${info.mid}">
+					<table>
+						<tr>
+							<td class="first"><input id="infoCheck" type="checkbox" name="infoCheck" th:value="'old' + ${status.index}"></td>
+							<td colspan="2">
+								<img th:src="@{/download(fileName = ${info.attach.path} + '/' + ${info.attach.uuid} + '_' + ${info.attach.imgName})}" alt="Banner Image" style="width: 700px; height: 100px;">
+							</td>
+						</tr>
+						<tr>
+							<td class="first">*배너 이미지</td>
+							<td colspan="2"><input type="file" name="bannerImg"></td>
+						</tr>
+						<tr>
+							<td class="first">링크 주소</td>
+							<td><input type="text" size="60" name="url" th:value="${info.url}"><td>
+							<th:block th:if="${info.target == 'blank'}">
+								<label><input type="radio" name="target" value="blank" checked="checked">새 창(blank)</label>
+								<label><input type="radio" name="target" value="self">본 창(self)</label>		
+							</th:block>
+							<th:block th:unless="${info.target == 'blank'}">
+								<label><input type="radio" name="target" value="blank">새 창(blank)</label>
+								<label><input type="radio" name="target" value="self" checked="checked">본 창(self)</label>		
+							</th:block>
+							</td>
+						</tr>
+						<tr>
+							<td class="first">대체 텍스트</td>
+							<td><input type="text" size="60" name="alt" th:value="${info.alt}"></td>
+							<td>
+								<select name="login">
+									<option th:if="${info.loginBefore == 0}" value="default" selected="selected"></option>
+									<option th:if="${info.loginBefore == 0}" value="before">로그인 전</option>
+									<option th:if="${info.loginBefore == 0}" value="after">로그인 후</option>
+									<option th:if="${info.loginBefore == 1}" value="default"></option>
+									<option th:if="${info.loginBefore == 1}" value="before" selected="selected">로그인 전</option>
+									<option th:if="${info.loginBefore == 1}" value="after">로그인 후</option>
+									<option th:if="${info.loginBefore == 2}" value="default"></option>
+									<option th:if="${info.loginBefore == 2}" value="before">로그인 전</option>
+									<option th:if="${info.loginBefore == 2}" value="after" selected="selected">로그인 후</option>
+								</select>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			</th:block>
+		</th:block>
+		</div>
+		<div id="banner-btn">
+			<button type="submit" data-oper="remove">선택 삭제</button>
+			<button type="submit" data-oper="modify">수정하기</button>
+		</div>
+	</section>	
+</div>
+    </th:block>
+</th:block>

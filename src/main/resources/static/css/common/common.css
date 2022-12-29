@@ -1,0 +1,277 @@
+@charset "UTF-8";
+@import url(reset.css);
+*, *:after, *:before {
+	box-sizing: border-box;
+}
+body {
+	background: #fffcf6;
+	font: 14px Malgun Ghothic,"맑은고딕",sans-serif;
+    color: #555;
+    min-width:320px;
+}
+#header-wrap {
+	margin-bottom: 20px;
+}
+.header-inner {
+	position: relative;
+	height: 238px;
+}
+.header-inner, #container, #footer-wrap {
+	max-width: 1200px;
+	width: 90%;
+	margin: 0 auto;
+}
+.top-banner-wrap {
+	display: flex;
+	flex-flow: row nowrap;
+	align-items: center;
+	width: 60%;
+	margin: 10px auto;
+	height: 52px;
+	border: 1px solid black;
+}
+.top-banner-wrap h1 {
+	width: 100%;
+	text-align: center;
+}
+.header-inner h1.logo {
+	text-align: center;
+	font-size: 1.5em;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+.header-inner h4.marketing-msg {
+	text-align: center;
+	margin: 10px 0;
+	font-size: 0.8em;
+	font-size: 0.8rem;
+}
+.header-inner #search_section {
+	text-align: center;
+}
+.subMenu {
+	float: right;
+	margin-right: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.subMenu li {
+	display: inline-block;
+	background: url(../../images/bar-util.jpg) 0 7px no-repeat;
+	padding-left: 6px;
+}
+.subMenu li:first-child {
+	background: none;
+}
+.subMenu li a {
+	font-size: 0.8em;
+	font-size: 0.8rem;
+}
+.blind {
+	position: absolute;
+	overflow: hidden;
+	clip: rect(0000);
+	margin: -1px;
+	width: 1px;
+	height: 1px;
+}
+.mobile-menu-open{
+    position: absolute;
+    right: 10px;
+    top: 0;
+    display: none;
+}    
+.mobile-menu-open button{
+    width: 40px;
+    height: 40px;
+    background:none;
+    border: none;
+}
+.mobile-menu-open button span:first-child ~ span{
+    height: 4px;
+    width:30px;
+    border-radius: 2px;
+    position: absolute;
+    background-color: #fff;
+    top: 50%;
+    left: 50%;
+    margin-top: -2px;
+    margin-left: -15px;
+}
+.mobile-menu-open button span:first-child + span{
+    margin-top: -13px;
+}
+.mobile-menu-open button span:first-child + span + span{
+    margin-top: 10px;
+}
+.mobile-menu-wrap {
+	clear: both;
+}
+#gnb {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	z-index: 100;
+	background: white;
+}
+#gnb > ul > li {
+	width: 16.66%;
+	float: left;
+}
+#gnb > ul > li > a {
+	font-size:1.125em;
+	font-size:1.125rem;
+	text-align: center;
+	display: block;
+	height: 45px;
+	line-height: 45px;
+}
+#gnb ul .secMenu {
+	display: none;
+	position: absolute;
+	top: 45px;
+	background-color: #fff;
+	border: 1px solid black;
+	border-top: none;
+	border-radius: 0 0 7px 7px;
+	font-size: 0.8125em;
+	font-size: 0.8125rem;
+}
+#gnb ul .secMenu1 {
+	left: 0;
+	width: 100%;
+}
+#gnb ul .secMenu2 {
+	left: 42%;
+	width: 140px;
+	margin-left: -70px;
+}
+#gnb ul .secMenu3 {
+	left: 92%;
+	width: 140px;
+	margin-left: -70px;
+}
+#gnb ul .secMenu a {
+	display: block;
+	height: 30px;
+	line-height: 30px;
+	margin-left: 10px;
+}
+#container {
+	min-height: 600px;
+}
+#footer-wrap {
+	clear: both;
+	display: flex;
+	flex-flow: column nowrap;
+	height: 360px;
+}
+#footer-sns {
+	height: 120px;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+}
+#footer-sns > li {
+	width: 23.5%;
+	line-height: 120px;
+	text-align: center;
+	border: 1px solid black;
+}
+#footer-sns > li span {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+}
+#footer-sns > li:nth-child(1) span {
+	text-indent: -9999px;
+	background: url(../../images/gmarket_logo.png) no-repeat center center;
+	background-size: contain;
+}
+#footer-sns > li:nth-child(2) span {
+	text-indent: -9999px;
+	background: url(../../images/11st.svg) no-repeat center center;
+}
+#footer-sns > li:nth-child(3) span {
+	text-indent: -9999px;
+	background: url(../../images/auction_logo.png) no-repeat center center;
+	background-size: 90% 90%;
+}
+#footer-sns > li:nth-child(4) span {
+	background: url(../../images/naver_logo.png) no-repeat 27% center;
+	background-size: 25% 40%;
+	text-indent: 50px;
+	font-size: 32px;
+}
+#footer-menu {
+	height: 30px;
+	position: relative;
+	top: 38px;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+}
+#footer-menu ul {
+	width: 580px;
+	margin: 0 auto;
+}
+#footer-menu li {
+	float: left;
+	padding: 5px 10px;
+	background: url(../../images/bar-util.jpg) 0 7px no-repeat;
+}
+#footer-menu li:first-child {
+	background: none;
+}
+.footer-1 {
+	position: relative;
+	top: 60px;
+	width: 100%;
+	height: 90px;
+	display: flex;
+	line-height: 1.5;
+	font-size: 0.8em;
+	font-size: 0.8rem;
+	flex-direction: row;
+}
+.footer-1 > div {
+	display: inline-block;
+}
+.footer-1 div:nth-child(1) {
+	width: 30%;
+}
+.footer-1 div:nth-child(2) {
+	width: 30%;
+}
+.footer-1 div:nth-child(3) {
+	width: 40%;
+}
+.footer-11 h1 {
+	font-size: 1.6em;
+	font-size: 1.6rem;
+	font-weight: bold;
+	text-align: center;
+}
+.footer-11 h2 {
+	font-size: 1.2em;
+	font-size: 1.2rem;
+	font-weight: bold;
+	text-align: center;
+}
+.footer-12 a {
+	padding: 5px;
+	border: 1px solid black;
+}
+.footer-12 p:last-child {
+	font-size: 0.9em;
+	font-size: 0.9rem;
+	margin-top: 10px;
+}
+.footer-2 {
+	position: relative;
+	top: 60px;
+	margin-left: 30%;
+	height: 60px;
+	font-size: 0.8em;
+	font-size: 0.8rem;
+}

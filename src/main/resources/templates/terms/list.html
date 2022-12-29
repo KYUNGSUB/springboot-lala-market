@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/abasic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+<link rel="stylesheet" th:href="@{/css/aterms.css}">
+<script type="text/javascript" th:src="@{/js/aterms.js}"></script>
+<div id="main-wrap">
+	<aside>
+		<h4>상품 관리</h4>
+		<ul>
+			<li><a href="1">약관</a></li>
+			<li><a href="2">정책</a></li>
+			<li><a href="3">결제 방법</a></li>
+			<li><a href="4">메뉴 접근 권한</a></li>
+		</ul>
+	</aside>
+	<section id="main-sec">
+		<p>| 기본 정책 관리 > 약관 관리</p>
+		<h2>| 약관 관리</h2>
+		<hr>
+		<div>
+			<button id="addBtn" class="right">약관 추가하기</button>&nbsp;
+			<button id="cancelBtn" class="right">취소</button>&nbsp;
+		</div>
+		<div id="newTerms" class="listArea">
+			<form action="add" method="post" name="addFrm">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<input type="text" size="112" name="title" required placeholder="타이틀을 입력하세요!"><br>
+				<textarea rows="10" cols="114" name="content" placeholder="내용을 입력하세요!"></textarea><br>
+				<input id="usage" type="radio" name="expose" value="yes"><label for="usage">사용함</label>&nbsp;
+				<input id="no_usage" type="radio" name="expose" value="no"><label for="no_usage">사용하지 않음</label>&nbsp;
+				<input id="mandatory" type="checkbox" name="mandatory" value="yes"><label for="mandatory">필수 동의</label>
+				<p><input type="submit" value="추가"></p>
+			</form>
+		</div>
+		<th:block th:if="${list.size() == 0}">
+			
+		</th:block>
+		<div th:each="term : ${list}" class="listArea">
+			<form class="modFrm" action="modify" method="post" name="modFrm">
+				<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+				<input type="hidden" name="tid" th:value="${term.tid}">
+				<input type="text" name="title" size="112" th:value="${term.title}" required><br>
+				<textarea rows="10" cols="114" name="content">[[${term.content}]]</textarea><br>
+			<th:block th:if="${term.expose == true}">
+				<input id="usage" type="radio" name="expose" value="yes" checked="checked"><label for="usage">사용함</label>&nbsp;
+				<input id="no_usage" type="radio" name="expose" value="no"><label for="no_usage">사용하지 않음</label>&nbsp;
+			</th:block>
+			<th:block th:if="${term.expose != true}">
+				<input id="usage" type="radio" name="expose" value="yes"><label for="usage">사용함</label>&nbsp;
+				<input id="no_usage" type="radio" name="expose" value="no" checked="checked"><label for="no_usage">사용하지 않음</label>&nbsp;
+			</th:block>
+			<th:block th:if="${term.mandatory == true}">
+				<input id="mandatory" type="checkbox" name="mandatory" value="yes" checked="checked"><label for="mandatory">필수 동의</label>
+			</th:block>
+			<th:block th:if="${term.mandatory != true}">
+				<input id="mandatory" type="checkbox" name="mandatory" value="yes"><label for="mandatory">필수 동의</label><br>
+			</th:block>
+				<p><input type="submit" value="수정" data-oper="modify">&nbsp;<input type="submit" value="삭제" data-oper="remove"></p>
+			</form>
+		</div>
+	</section>	
+</div>
+    </th:block>
+</th:block>

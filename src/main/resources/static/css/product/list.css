@@ -1,0 +1,115 @@
+@charset "UTF-8";
+#main-wrap {
+	margin-top: 5px;
+}
+#main-wrap h4 {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+#main-wrap > aside {
+	float: left;
+	width: 14%;
+	border: 1px solid black;
+	padding: 5px;
+}
+#main-wrap > aside ul {
+	line-height: 1.4;
+}
+#main-wrap > aside li {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+#main-wrap > aside a {
+	font-size: 0.9em;
+	font-size: 0.9rem;
+	margin-left: -10px;
+}
+#main-wrap > section {
+	float: right;
+	width: 83%;
+	padding: 5px;
+	margin-left: 5px;
+}
+#main-wrap > section > h2 {
+	font-weight: bold;
+	font-size: 1.1em;
+	font-size: 1.1rem;
+}
+#main-wrap > section h3 {
+	font-weight: bold;
+	font-size: 1.0em;
+	font-size: 1.0rem;
+	margin-top: 15px;
+}
+#main-wrap > section > p {
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	font-size: 0.9rem;
+}
+#main-sec > form {
+	margin-top: 10px;
+}
+#searchArea {
+	margin: 0 10px;
+	padding: 5px;
+	border: 1px solid black;
+}
+#searchArea table {
+	display: none;
+	width: 100%;
+}
+#searchArea td {
+	padding: 5px;
+}
+#searchArea div:first-of-type {
+	margin: 5px 0;
+	text-align: center;
+}
+#searchArea div:last-of-type {
+	margin-left: 82%;
+}
+#closeBtn {
+	display: none;
+}
+#searchArea select {
+	padding: 5px;
+	width: 100px;
+}
+#searchArea input {
+	padding: 5px;
+}
+#searchArea p {
+	margin: 10px 0;
+	text-align: center;
+}
+#searchArea p input {
+	width: 100px;
+}
+#pArea {
+	margin-top: 50px;
+}
+#pArea > div {
+	margin-top: 10px;
+}
+#pArea table {
+	width: 100%;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	border-collapse: collapse;
+}
+#pArea th, #pArea td {
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: 5px;
+	text-align: center;
+	vertical-align: middle;
+}
+#pArea th {
+	background-color: #eee;
+}
+#pagingArea {
+	text-align: center;
+}
+#pagingArea .on {
+	background-color: yellow;
+}

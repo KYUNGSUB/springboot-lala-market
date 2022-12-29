@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{/layout/basic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+<link rel="stylesheet" th:href="@{/css/member/terms.css}">
+<script type="text/javascript" th:src="@{/js/terms.js}"></script>
+	<div id="container">
+		<aside>
+			<img th:src="@{/images/term_aside1.png}" alt="회원가입 절차">
+		</aside>
+		<section>
+			<h4>| 라라마켓 서비스 약관 동의</h4>
+		<th:block th:each="term : ${list}" th:if="${term.expose}">
+			<article th:title="${term.title}" th:data-oper="${term.tid}">
+				<div class="service-wrap">
+					<p>[[${term.title}]]</p>
+					<div class="content-box">
+						[[${term.content}]]
+					</div>
+					<label>
+						<input type="checkbox" name="agreement" th:data-oper="${term.mandatory}">
+					<th:block th:if="${term.mandatory == true}">
+						동의함(필수)
+					</th:block>
+					<th:block th:if="${term.mandatory == false}">
+						동의함(선택)
+					</th:block>	
+					</label>
+				</div>
+			</article>
+		</th:block>
+			<article id="allagree-check">
+				<input type="checkbox" id="all-agree" value="all-agree">
+				<label for="all-agree">모두 동의</label><span class="margin1"></span>
+				<form id="agreeForm" th:action="@{/member/terms}" method="post">
+					<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+					<input class="btnA" type="submit" value="다음"><span class="margin2"></span>
+					<input class="btnA" type="button" value="취소">
+				</form>
+			</article>
+		</section>
+	</div>
+    </th:block>
+</th:block>

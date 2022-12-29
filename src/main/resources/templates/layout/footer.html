@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:fragment="footer">
+	<div id="footer-wrap">
+		<ul id="footer-sns">
+			<li><a href="https://www.gmarket.co.kr" target="_blank"><span>G마켓</span></a></li>
+			<li><a href="https://www.11st.co.kr/" target="_blank"><span>11번가</span></a></li>
+			<li><a href="http://www.auction.co.kr/" target="_blank"><span>옥션</span></a></li>
+			<li><a href="https://shopping.naver.com" target="_blank"><span>쇼핑</span></a></li>
+		</ul>
+		<ul id="footer-menu">
+			<li><a href="#">라라마켓 블로그</a></li>
+			<li><a href="#">회사소개</a></li>
+			<li><a href="#">이용약관</a></li>
+			<li><a href="#">개인정보처리방침</a></li>
+			<li><a href="#">고객센터</a></li>
+			<li><a href="#">판매자 등록</a></li>
+		</ul>
+		<div class="footer-1">
+			<div class="footer-11">
+				<h1><a th:href="@{/}">라라마켓</a></h1>
+				<h2><a th:href="@{/}">LaLa Market</a></h2>
+			</div>
+			<div class="footer-12">
+				<p>| 상호명 : 라라마켓</p>
+				<p>| 사업자등록번호 : 000-00-00000</p>
+				<p><a href="https://bizno.net/" target="_blank">사업자번호 확인</a></p>
+			</div>
+			<div class="footer-13">
+				<p>| 대표자 : 홍길동</p>
+				<p>| 통신판매업신고번호 : 0000-서울 서초-0000</p>
+				<p>| 개인정보관리책임자 : 임꺽정</p>
+				<p>| 호스팀 정보 사업자 : 이소라</p>
+			</div>
+		</div>
+		<div class="footer-2">
+			<p>| 주소 : (00000) 서울시 서초구 00000 00</p>
+			<p>| TEL 070-000-0000 | FAX (02)000-0000 | E-mail: lala@lalamarket.co.kr</p>
+			<p>Copyright 2017 라라마켓 Corp. All Rights Reserved.</p>
+		</div>
+	</div>
+</body>
+</th:block>

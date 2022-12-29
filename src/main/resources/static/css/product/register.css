@@ -1,0 +1,146 @@
+@charset "UTF-8";
+#main-wrap {
+	margin-top: 5px;
+}
+#main-wrap h4 {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+#main-wrap > aside {
+	float: left;
+	width: 14%;
+	border: 1px solid black;
+	padding: 5px;
+}
+#main-wrap > aside ul {
+	line-height: 1.4;
+}
+#main-wrap > aside li {
+	list-style-type: disc;
+	list-style-position: inside;
+}
+#main-wrap > aside a {
+	font-size: 0.9em;
+	font-size: 0.9rem;
+	margin-left: -10px;
+}
+#main-wrap > section {
+	float: right;
+	width: 83%;
+	padding: 5px;
+	margin-left: 5px;
+}
+#main-wrap > section > h2 {
+	font-weight: bold;
+	font-size: 1.1em;
+	font-size: 1.1rem;
+}
+#main-wrap > section h3 {
+	font-weight: bold;
+	font-size: 1.0em;
+	font-size: 1.0rem;
+	margin-top: 15px;
+}
+#main-wrap > section > p {
+	margin-bottom: 10px;
+	font-size: 0.9em;
+	font-size: 0.9rem;
+}
+#main-sec table {
+	width: 100%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	margin-top: 5px;
+}
+#main-sec th, #main-sec td {
+	border: 1px solid black;
+}
+#main-sec th {
+	padding: 5px 10px;
+	background-color: #eee;
+}
+#main-sec td {
+	padding: 5px 10px;
+}
+form > div {
+	margin-top: 10px;
+}
+#main-sec select {
+	width: 20%;
+	padding: 5px; 
+}
+#main-sec input[name='name'] {
+	width: 77.5%;
+}
+#main-sec input {
+	padding: 5px;
+}
+#infoArea, #optionArea {
+	min-height: 50px;
+}
+#infoArea p, #optionArea p {
+	margin: 5px 0;
+}
+#optionArea input[type='text'] {
+	margin-right: 10px;
+}
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  margin-top: 10px;
+}
+/* Style the buttons that are used to open the tab content */
+.tab input {
+	width: 100px;
+  background-color: #f1f1f1;
+  float: left;
+  border: 1px solid black;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 16px;
+  transition: 0.3s;
+}
+/* Change background color of buttons on hover */
+.tab input:hover {
+  background-color: #ddd;
+}
+/* Create an active/current tablink class */
+.tab input.active {
+  background-color: #ccc;
+}
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 6px;
+  border: 1px solid #ccc;
+  margin-top: 0px;
+}
+.box {
+	width: 48%;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+.box > div {
+	margin-top: 10px;
+	width: 100%;
+	height: 100px;
+}
+.box > div > p {
+	padding: 5px 10px;
+}
+.box > textarea {
+	height: 100px;
+}
+#submitBtn {
+	text-align: center;
+	margin: 20px 0 10px;
+}
+#submitBtn input {
+	width: 100px;
+}
+.delFile {
+	width: 20px;
+	height: 10px;
+	border: 1px solid black;
+	border-radius: 5px 5px;
+}
