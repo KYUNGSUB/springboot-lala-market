@@ -15,8 +15,8 @@ $(function() {
 	});
 	
 	$("#pwd").on("keyup", function(e) {
-//		var regEx = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,20}$/;
-		var regEx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/;
+		var regEx = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,20}$/;
+//		var regEx = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$/;
 		var pwVal = $("#pwd").val();
 		if(pwVal.length > 0 && !regEx.test(pwVal)) {
 			$("#pwd").css("color", "red");

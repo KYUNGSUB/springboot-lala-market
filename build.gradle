@@ -57,6 +57,10 @@ dependencies {
 	implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
 	implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 	implementation group: 'net.coobird', name: 'thumbnailator', version: '0.4.12'
+	
+	// amazon aws sdk
+	implementation platform('software.amazon.awssdk:bom:2.15.0')
+	implementation 'software.amazon.awssdk:s3'
 }
 
 tasks.named('test') {

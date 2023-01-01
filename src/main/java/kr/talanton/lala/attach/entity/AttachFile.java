@@ -25,4 +25,5 @@ public class AttachFile extends BaseEntity {
     private String uuid;
     private String imgName;
     private String path;
+    private String fileType;	// 이미지 여부 ('1': 이미지, '0': 일반)
 }

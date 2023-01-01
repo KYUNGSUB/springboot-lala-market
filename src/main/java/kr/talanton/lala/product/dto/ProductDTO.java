@@ -36,12 +36,12 @@ public class ProductDTO {
 	private String register_userid;
 	private int readCount;
 	private String introduction;
-	private ProductImageDTO pc_list;
-	private List<ProductImageDTO> pc_main;
-	private ProductImageDTO pc_expose;
-	private ProductImageDTO mobile_list;
-	private List<ProductImageDTO> mobile_main;
-	private ProductImageDTO mobile_expose;
+	private ProductMappingDTO pc_list;
+	private List<ProductMappingDTO> pc_main;
+	private ProductMappingDTO pc_expose;
+	private ProductMappingDTO mobile_list;
+	private List<ProductMappingDTO> mobile_main;
+	private ProductMappingDTO mobile_expose;
 	private String pc_detail;
 	private String mobile_detail;
 	private String pc_delivery;
