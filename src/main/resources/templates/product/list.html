@@ -22,11 +22,11 @@
 		<div id="searchArea">
 			<div>
 				<select name="type">
-					<option value="none" th:selected="${pageRequestDTO.type == null}">-</option>
-					<option value="name" th:selected="${pageRequestDTO.type =='name'}">상품명</option>
-					<option value="regid" th:selected="${pageRequestDTO.type =='regid'}">등록ID</option>
+					<option th:selected="${productPageRequestDTO.type == null}">-</option>
+					<option value="name" th:selected="${productPageRequestDTO.type =='name'}">상품명</option>
+					<option value="regid" th:selected="${productPageRequestDTO.type =='regid'}">등록ID</option>
 				</select>&nbsp;
-				<input type="text" name="keyword" th:value="${pageRequestDTO.keyword}" placeholder="검색어를 입력하세요">
+				<input type="text" name="keyword" th:value="${productPageRequestDTO.keyword}" placeholder="검색어를 입력하세요">
 			</div>
 			<div>
 				<a id="showBtn" href="#">상세 검색</a> &nbsp; <span><a id="closeBtn" href="#">닫기</a></span>

@@ -34,6 +34,7 @@ public class ProductDTO {
 	private boolean opt;
 	private List<ProductOptionDTO> optionList;
 	private String register_userid;
+	private String register_name;
 	private int readCount;
 	private String introduction;
 	private ProductMappingDTO pc_list;

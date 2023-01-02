@@ -38,16 +38,15 @@ public class SearchProductRepositoryImpl extends QuerydslRepositorySupport imple
 		QProduct product = QProduct.product;
 		QProductMapping mapping = QProductMapping.productMapping;
 		QAttachFile attach = QAttachFile.attachFile;
-		QCategory category1 = QCategory.category;
-		QCategory category2 = QCategory.category;
+		QCategory category = QCategory.category;
 		QMember register = QMember.member;
 		JPQLQuery<Product> jpqlQuery = from(product);
 		jpqlQuery.leftJoin(mapping).on(mapping.product.eq(product));
 		jpqlQuery.leftJoin(attach).on(mapping.attach.eq(attach));
-		jpqlQuery.leftJoin(category1).on(product.category1.eq(category1));
-		jpqlQuery.leftJoin(category2).on(product.category2.eq(category2));
-		jpqlQuery.leftJoin(register).on(product.register.eq(register));
-		JPQLQuery<Tuple> tuple = jpqlQuery.select(product, mapping, attach, category1, category2, register);
+		jpqlQuery.leftJoin(product.category1);
+		jpqlQuery.leftJoin(product.category2);
+		jpqlQuery.leftJoin(product.register);
+		JPQLQuery<Tuple> tuple = jpqlQuery.select(product, mapping, attach, product.category1, product.category2, product.register);
 		BooleanBuilder booleanBuilder = new BooleanBuilder();
 		BooleanExpression expression = product.pid.gt(0L);
 		booleanBuilder.and(expression);
@@ -62,13 +61,13 @@ public class SearchProductRepositoryImpl extends QuerydslRepositorySupport imple
 			booleanBuilder.and(keywordExp);
 		}
 		// 세부 검색
-		if(dto.getDetail().equals("yes")) {
+		if(dto.getDetail() != null && dto.getDetail().equals("yes")) {
 			if(dto.getCategory1() != null) {
-				BooleanExpression categoryExpression = category1.code.eq(dto.getCategory1());
+				BooleanExpression categoryExpression = product.category1.code.eq(dto.getCategory1());
 				booleanBuilder.and(categoryExpression);
 			}
 			if(dto.getCategory2() != null) {
-				BooleanExpression categoryExpression = category2.code.eq(dto.getCategory2());
+				BooleanExpression categoryExpression = product.category2.code.eq(dto.getCategory2());
 				booleanBuilder.and(categoryExpression);
 			}
 			if(dto.getPriceFrom() > 0 && dto.getPriceTo() > 0) {

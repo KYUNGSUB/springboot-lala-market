@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.talanton.lala.attach.dto.AttachFileDTO;
+import kr.talanton.lala.attach.entity.AttachFile;
 import kr.talanton.lala.attach.repository.AttachFileRepository;
 import kr.talanton.lala.category.entity.Category;
 import kr.talanton.lala.common.dto.PageResultDTO;
@@ -124,8 +125,9 @@ public class ProductServiceImpl implements ProductService {
 		log.info(pageRequestDTO);
 		int total = (int)productRepository.count();
 		Pageable pageable = pageRequestDTO.getPageable(Sort.by("pid").descending());
-		Function<Object[], ProductDTO> fn = (en -> entityToDto((Product)en[0], (Category)en[1], (Category)en[2], (Member)en[3]));
-        Page<Object[]> result = productRepository.getProductWithRegister(pageable);
+		Function<Object[], ProductDTO> fn = (en -> 
+			entityToDto((Product)en[0], (ProductMapping)en[1], (AttachFile)en[2], (Category)en[3], (Category)en[3], (Member)en[5]));
+        Page<Object[]> result = productRepository.searchPage(pageRequestDTO, pageable);
         
 //        Page<Object[]> result = repository.searchPage(
 //                pageRequestDTO.getType(),

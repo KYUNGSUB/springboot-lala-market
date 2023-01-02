@@ -11,6 +11,14 @@
 <link rel="stylesheet" th:href="@{/css/common/reset.css}">
 <link rel="stylesheet" th:href="@{/css/common/acommon.css}">
 <script th:src="@{/js/jquery.js}"></script>
+<script type="text/javascript">
+$(document).ready(function(e) {
+	var csrfHeaderName = '[[${_csrf.headerName}]]'; 
+	var csrfTokenValue= '[[${_csrf.token}]]';
+	window.localStorage.setItem("csrfHeaderName", csrfHeaderName);
+	window.localStorage.setItem("csrfTokenValue", csrfTokenValue);
+});
+</script>
 <script th:src="@{/js/acommon.js}"></script>
 </head>
 <body>

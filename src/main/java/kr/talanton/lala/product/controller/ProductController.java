@@ -45,9 +45,9 @@ public class ProductController {
 	}
 
 	@GetMapping("/list")
-	public void list(ProductPageRequestDTO requestDTO, Model model) {
-		log.info("list: " + requestDTO);
-		model.addAttribute("result", productService.getList(requestDTO));
+	public void list(ProductPageRequestDTO productPageRequestDTO, Model model) {
+		log.info("list: " + productPageRequestDTO);
+		model.addAttribute("result", productService.getList(productPageRequestDTO));
 	}
 	
 	@GetMapping("/slist")
