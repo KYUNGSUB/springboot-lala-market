@@ -21,7 +21,7 @@ $(function() {
 	var makeCategoryField = function() {	// option 태그에 1차 카테고리 추가
 		var select1Tag = $("select[name='category1']");
 		for(var i = 0;i < category.length;i++) {
-			var str = "<option value='" + category[i].name + 
+			var str = "<option value='" + category[i].code + 
 				"' data-oper='" + i + "'>" + category[i].name
 				+ "</option>";	// 카테고리 인덱스를 data-oper 속성에 추가
 			select1Tag.append(str);
@@ -44,7 +44,7 @@ $(function() {
 		$select2Tag.append("<option value=''>2차 선택</option>");
 		var list2 = category[i].list;
 		for(var j = 0;j < list2.length;j++) {
-			var str = "<option value='" + list2[j].name + "'>" + list2[j].name + "</option>";
+			var str = "<option value='" + list2[j].code + "'>" + list2[j].name + "</option>";
 			$select2Tag.append(str);
 		}
 	});

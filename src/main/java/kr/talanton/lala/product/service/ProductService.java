@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import kr.talanton.lala.category.entity.Category;
-import kr.talanton.lala.common.dto.PageRequestDTO;
 import kr.talanton.lala.common.dto.PageResultDTO;
 import kr.talanton.lala.member.entity.Member;
 import kr.talanton.lala.product.dto.ProductDTO;
+import kr.talanton.lala.product.dto.ProductPageRequestDTO;
 import kr.talanton.lala.product.dto.UploadProductForm;
 import kr.talanton.lala.product.entity.Product;
 import kr.talanton.lala.product.entity.ProductInfo;
@@ -15,7 +15,7 @@ import kr.talanton.lala.product.entity.ProductOption;
 
 public interface ProductService {
 	public void register(UploadProductForm form);
-	public PageResultDTO<ProductDTO, Object[]> getList(PageRequestDTO pageReuestDTO);
+	public PageResultDTO<ProductDTO, Object[]> getList(ProductPageRequestDTO pageReuestDTO);
 	
 	default Product uploadProductFormToProduct(UploadProductForm form) {
 		Member register = Member.builder().userid(form.getUserid()).build(); 

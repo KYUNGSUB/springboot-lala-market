@@ -15,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.talanton.lala.attach.dto.AttachFileDTO;
 import kr.talanton.lala.attach.repository.AttachFileRepository;
 import kr.talanton.lala.category.entity.Category;
-import kr.talanton.lala.common.dto.PageRequestDTO;
 import kr.talanton.lala.common.dto.PageResultDTO;
 import kr.talanton.lala.common.utils.Common;
 import kr.talanton.lala.common.utils.UploadFileUtil;
@@ -24,6 +23,7 @@ import kr.talanton.lala.policy.dto.PolicyCode;
 import kr.talanton.lala.policy.entity.Policy;
 import kr.talanton.lala.policy.repository.PolicyRepository;
 import kr.talanton.lala.product.dto.ProductDTO;
+import kr.talanton.lala.product.dto.ProductPageRequestDTO;
 import kr.talanton.lala.product.dto.UploadProductForm;
 import kr.talanton.lala.product.entity.Product;
 import kr.talanton.lala.product.entity.ProductHistory;
@@ -120,7 +120,7 @@ public class ProductServiceImpl implements ProductService {
 
 	@Transactional
 	@Override
-	public PageResultDTO<ProductDTO, Object[]> getList(PageRequestDTO pageRequestDTO) {
+	public PageResultDTO<ProductDTO, Object[]> getList(ProductPageRequestDTO pageRequestDTO) {
 		log.info(pageRequestDTO);
 		int total = (int)productRepository.count();
 		Pageable pageable = pageRequestDTO.getPageable(Sort.by("pid").descending());

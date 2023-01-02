@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.talanton.lala.category.service.CategoryService;
 import kr.talanton.lala.common.dto.PageRequestDTO;
 import kr.talanton.lala.common.utils.Common;
+import kr.talanton.lala.product.dto.ProductPageRequestDTO;
 import kr.talanton.lala.product.dto.UploadProductForm;
 import kr.talanton.lala.product.service.ProductService;
 import lombok.AllArgsConstructor;
@@ -44,7 +45,13 @@ public class ProductController {
 	}
 
 	@GetMapping("/list")
-	public void list(PageRequestDTO requestDTO, Model model) {
+	public void list(ProductPageRequestDTO requestDTO, Model model) {
+		log.info("list: " + requestDTO);
+		model.addAttribute("result", productService.getList(requestDTO));
+	}
+	
+	@GetMapping("/slist")
+	public void styleList(ProductPageRequestDTO requestDTO, Model model) {
 		log.info("list: " + requestDTO);
 		model.addAttribute("result", productService.getList(requestDTO));
 	}
