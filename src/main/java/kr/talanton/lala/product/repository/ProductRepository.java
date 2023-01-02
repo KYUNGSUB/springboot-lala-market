@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import kr.talanton.lala.product.entity.Product;
+import kr.talanton.lala.product.repository.search.SearchProductRepository;
 
-public interface ProductRepository extends JpaRepository<Product, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long>, SearchProductRepository {
 	// 게시글 목록 화면
 	@Query(value ="SELECT p, c1, c2, r " +
 			" FROM Product p " +
