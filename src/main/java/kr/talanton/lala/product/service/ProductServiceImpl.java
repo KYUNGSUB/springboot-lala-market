@@ -124,7 +124,19 @@ public class ProductServiceImpl implements ProductService {
 	public PageResultDTO<ProductDTO, Object[]> getList(ProductPageRequestDTO pageRequestDTO) {
 		log.info(pageRequestDTO);
 		int total = (int)productRepository.count();
-		Pageable pageable = pageRequestDTO.getPageable(Sort.by("pid").descending());
+		Pageable pageable;
+		switch(pageRequestDTO.getOrderby()) {
+		case 1:	// 낮은 가격순
+			pageable = pageRequestDTO.getPageable(Sort.by("price").ascending());
+			break;
+		case 2:	// 높은 가격순
+			pageable = pageRequestDTO.getPageable(Sort.by("price").descending());
+			break;
+		default:	// 최신순
+			pageable = pageRequestDTO.getPageable(Sort.by("pid").descending());
+			break;
+		}
+		
 		Function<Object[], ProductDTO> fn = (en -> 
 			entityToDto((Product)en[0], (ProductMapping)en[1], (AttachFile)en[2], (Category)en[3], (Category)en[3], (Member)en[5]));
         Page<Object[]> result = productRepository.searchPage(pageRequestDTO, pageable);

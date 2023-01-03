@@ -105,17 +105,17 @@ public class SearchProductRepositoryImpl extends QuerydslRepositorySupport imple
 	                }
 	            }
 	            booleanBuilder.and(conditionBuilder);
-			}
-			if(dto.getKind() == 1) {
-				BooleanExpression kindExpression = product.newp.eq(true);
-				booleanBuilder.and(kindExpression);
-			} else if(dto.getKind() == 2) {
-				BooleanExpression kindExpression = product.best.eq(true);
-				booleanBuilder.and(kindExpression);
-			} else if(dto.getKind() == 3) {
-				BooleanExpression kindExpression = product.discount.eq(true);
-				booleanBuilder.and(kindExpression);
-			}
+			}	
+		}
+		if(dto.getKind() == 1) {
+			BooleanExpression kindExpression = product.newp.eq(true);
+			booleanBuilder.and(kindExpression);
+		} else if(dto.getKind() == 2) {
+			BooleanExpression kindExpression = product.best.eq(true);
+			booleanBuilder.and(kindExpression);
+		} else if(dto.getKind() == 3) {
+			BooleanExpression kindExpression = product.discount.eq(true);
+			booleanBuilder.and(kindExpression);
 		}
 		tuple.where(booleanBuilder);
 		//order by
