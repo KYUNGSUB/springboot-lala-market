@@ -1,5 +1,7 @@
 package kr.talanton.lala.product.repository.search;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -56,7 +58,7 @@ public class SearchProductRepositoryImpl extends QuerydslRepositorySupport imple
 			if(dto.getType().equals("name")) {
 				keywordExp = product.name.contains(dto.getKeyword());
 			} else {
-				keywordExp = register.userid.contains(dto.getKeyword());
+				keywordExp = product.register.userid.contains(dto.getKeyword());
 			}
 			booleanBuilder.and(keywordExp);
 		}
@@ -75,7 +77,14 @@ public class SearchProductRepositoryImpl extends QuerydslRepositorySupport imple
 				booleanBuilder.and(priceExpression);
 			}
 			if(dto.getRegFrom() != null && dto.getRegTo() != null) {
-				BooleanExpression regExpression = product.regDate.between(dto.getRegFrom(), dto.getRegTo());
+				/*	String str = "2021-11-05 13:47:13.248";
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS");
+					LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+					System.out.println(dateTime);
+				 */
+				LocalDateTime from = conversionStrToLocalDateTime(dto.getRegFrom());
+				LocalDateTime to = conversionStrToLocalDateTime(dto.getRegTo());
+				BooleanExpression regExpression = product.regDate.between(from, to);
 				booleanBuilder.and(regExpression);
 			}
 			if(dto.getExposeArr() != null) {
@@ -129,5 +138,10 @@ public class SearchProductRepositoryImpl extends QuerydslRepositorySupport imple
                 result.stream().map(t -> t.toArray()).collect(Collectors.toList()),
                 pageable,
                 count);
+	}
+
+	private LocalDateTime conversionStrToLocalDateTime(String regFrom) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		return LocalDateTime.parse(regFrom + " 00:00:01", formatter);
 	}
 }
