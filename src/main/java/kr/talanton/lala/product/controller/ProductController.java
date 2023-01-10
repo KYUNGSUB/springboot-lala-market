@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.talanton.lala.category.service.CategoryService;
-import kr.talanton.lala.common.dto.PageRequestDTO;
 import kr.talanton.lala.common.utils.Common;
 import kr.talanton.lala.product.dto.ProductPageRequestDTO;
 import kr.talanton.lala.product.dto.UploadProductForm;
