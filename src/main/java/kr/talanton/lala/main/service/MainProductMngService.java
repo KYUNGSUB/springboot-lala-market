@@ -1,5 +1,12 @@
 package kr.talanton.lala.main.service;
 
-public interface MainProductMngService {
+import kr.talanton.lala.main.dto.MainPmainDTO;
+import kr.talanton.lala.main.entity.MainPmain;
 
+public interface MainProductMngService {
+	MainPmainDTO getMainProductManagementInfo(String kind);
+	
+	default MainPmainDTO entityToDTO(MainPmain entity) {
+		return null;
+	}
 }
