@@ -29,9 +29,9 @@ public class MainPlist extends BaseEntity {
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private MainPmain main;
-	
+		
 	private int position;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	private Product product;
 }

@@ -39,7 +39,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	
-	implementation("mysql:mysql-connector-java:8.0.29")
+	implementation("mysql:mysql-connector-java:8.0.30")
 	// Security
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'

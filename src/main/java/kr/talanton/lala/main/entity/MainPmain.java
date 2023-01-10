@@ -1,7 +1,12 @@
 package kr.talanton.lala.main.entity;
 
+import java.util.List;
+import java.util.ArrayList;
+
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 
 import kr.talanton.lala.common.entity.BaseEntity;

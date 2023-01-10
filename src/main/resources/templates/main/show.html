@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./layout/abasic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+<link rel="stylesheet" th:href="@{/css/mainProd.css}">
+<script type="text/javascript" th:src="@{/js/mainProd.js}"></script>
+<div id="main-wrap">
+	<aside>
+		<h4>메인 상품 관리</h4>
+		<ul>
+			<li><a href="1">1열 상품</a></li>
+			<li><a href="2">2열 상품</a></li>
+			<li><a href="3">카테고리 상품</a></li>
+		</ul>
+	</aside>
+	<section id="main-sec">
+		<p>| 메인 상품 관리 > 1열 상품</p>
+		<h2>1열 상품 관리</h2>
+		<hr>
+		<div>
+			<input type="text" placeholder="제목을 입력하세요!" name="title">
+		</div>
+		<div>
+			<input type="radio" id="d1" name="display" value="1">&nbsp;<label for="d1">스타일 숍 상품 등록순</label><br>
+			<input type="radio" id="d2" name="display" value="2">&nbsp;<label for="d2">스타일 숍 최근 7일간 조회수 높은순</label><br>
+			<input type="radio" id="d3" name="display" value="3">&nbsp;<label for="d3">관리자 선택</label>
+		</div>
+		<div>
+			<table style="width: 100%">
+				<tr>
+					<th>선택</th>
+					<th>자리 번호</th>
+					<th>카테고리와 상품명</th>
+					<th>판매가격<br>(적립금)</th>
+					<th>조회수</th>
+					<th>수정</th>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb1"></td>
+					<td>1</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb2"></td>
+					<td>2</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb3"></td>
+					<td>3</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb4"></td>
+					<td>4</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb5"></td>
+					<td>5</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb6"></td>
+					<td>6</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb7"></td>
+					<td>7</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb8"></td>
+					<td>8</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb9"></td>
+					<td>9</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" id="cb10"></td>
+					<td>10</td>
+					<td colspan="3">선택된 상품이 없습니다.</td>
+					<td><button type="button">추가</button></td>
+				</tr>
+			</table>
+		</div>
+		<div>
+			<button type="button">선택 삭제</button>
+			<span>
+				<input type="submit" value="저장">&nbsp;<input type="button" value="취소">
+			</span>
+		</div>
+	</section>	
+</div>
+    </th:block>
+</th:block>

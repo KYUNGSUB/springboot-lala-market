@@ -15,7 +15,7 @@ public class MainPlistDTO {
 	private Long lid;
 	private String kind;
 	private int position;
-	private Long itemId;
+	private Long pid;
 	private LocalDateTime regDate;
 	private LocalDateTime modDate;
 }
