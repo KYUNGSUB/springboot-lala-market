@@ -54,4 +54,8 @@ public class ProductDTO {
 	private String expose;
 	private LocalDateTime regDate;
 	private LocalDateTime modDate;
+	
+	public int getDepositFee() {
+		return price * deposit / 100;
+	}
 }

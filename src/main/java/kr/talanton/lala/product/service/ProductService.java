@@ -31,6 +31,8 @@ public interface ProductService {
 				.category2(category2)
 				.name(form.getName())
 				.price(form.getPrice())
+				.deposit(form.getDeposit())
+				.delivery(form.getDelivery())
 				.saleprice(form.getSalePrice())
 				.maxpurchase(form.getMaxPurchase())
 				.register(register)
@@ -40,47 +42,6 @@ public interface ProductService {
 				.memo(form.getMemo())
 				.expose(form.getExpose())
 				.build();
-		if(form.getPoint().equals("basic")) {
-			product.setDeposit(-1);			// 기본 포인트 적용
-		} else if(form.getPoint().equals("apart")) {
-			product.setDeposit(form.getDeposit());	// 개별 포인트 적용
-		} else {
-			product.setDeposit(0);			// 포인트 없음
-		}
-		if(form.getFee().equals("basic")) {
-			product.setDelivery(-1);		// 기본 배송비
-		} else if(form.getFee().equals("apart")) {
-			product.setDelivery(form.getDelivery());	// 개별 배송비
-		} else {
-			product.setDelivery(0);	// 무료 배송비
-		}
-		for(String f : form.getFeature()) {
-			if(f.equals("newp")) {
-				product.setNewp(true);
-			} else if(f.equals("best")) {
-				product.setBest(true);
-			} else {
-				product.setDiscount(true);
-			}
-		}
-		if(form.getInfoBtn().equals("no")) {
-			product.setInfo(false);
-		} else {
-			product.setInfo(true);
-		}
-		if(form.getOptionBtn().equals("no")) {
-			product.setOpt(false);
-		} else {
-			product.setOpt(true);
-		}
-		if(form.getDguide().equals("indivisual")) {	// 개별 배송 안내
-			product.setPc_delivery(form.getPc_delivery());
-			product.setMobile_delivery(form.getMobile_delivery());
-		}
-		if(form.getExchange().equals("indivisual")) {
-			product.setPc_exchange(form.getPc_exchange());
-			product.setMobile_exchange(form.getMobile_exchange());
-		}
 		return product;
 	}
 	

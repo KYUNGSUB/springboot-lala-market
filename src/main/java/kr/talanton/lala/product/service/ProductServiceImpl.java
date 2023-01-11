@@ -59,7 +59,52 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public void register(UploadProductForm form) {
+		// 적립률 산정
+		if(form.getPoint().equals("basic")) {
+			form.setDeposit(getPolicyDepositRate());	// 기본 적립률 적용
+		} else if(form.getPoint().equals("none")) {
+			form.setDeposit(0);			// 포인트 없음
+		}
+		
+		// 배송비 산정
+		if(form.getFee().equals("basic")) {
+			form.setDelivery(getPolicyDeliveryFee());	// 기본 배송비
+		} else if(form.getFee().equals("none")) {
+			form.setDelivery(0);						// 무료 배송비
+		}
+		
 		Product product = uploadProductFormToProduct(form);
+		
+		// 상품 특성
+		for(String f : form.getFeature()) {
+			if(f.equals("newp")) {
+				product.setNewp(true);
+			} else if(f.equals("best")) {
+				product.setBest(true);
+			} else {
+				product.setDiscount(true);
+			}
+		}
+		
+		if(form.getInfoBtn().equals("no")) {
+			product.setInfo(false);
+		} else {
+			product.setInfo(true);
+		}
+		if(form.getOptionBtn().equals("no")) {
+			product.setOpt(false);
+		} else {
+			product.setOpt(true);
+		}
+		if(form.getDguide().equals("indivisual")) {	// 개별 배송 안내
+			product.setPc_delivery(form.getPc_delivery());
+			product.setMobile_delivery(form.getMobile_delivery());
+		}
+		if(form.getExchange().equals("indivisual")) {
+			product.setPc_exchange(form.getPc_exchange());
+			product.setMobile_exchange(form.getMobile_exchange());
+		}
+				
 		log.info("product..." + product);
 		productRepository.save(product);
 		form.setPid(product.getPid());
@@ -85,6 +130,26 @@ public class ProductServiceImpl implements ProductService {
 		storeImageFiles(form);
 	}
 	
+	private int getPolicyDeliveryFee() {
+		log.info("PolicyCode.DELEVERY_FEE.ordinal()=" + PolicyCode.DELEVERY_FEE.ordinal());
+		Optional<Policy> policyRes = policyRepository.findById(PolicyCode.DELEVERY_FEE.ordinal());	// 적립금
+		if(policyRes.isPresent()) {
+			Policy depositPolicy = policyRes.get();
+			return Integer.parseInt(depositPolicy.getValue());
+		}
+		return 3000;	// 프로그램으로 정한 값
+	}
+
+	private int getPolicyDepositRate() {	// 적립률을 소수로 할 필요가 있음
+		log.info("PolicyCode.PURCHASE_POINT.ordinal()=" + PolicyCode.PURCHASE_POINT.ordinal());
+		Optional<Policy> policyRes = policyRepository.findById(PolicyCode.PURCHASE_POINT.ordinal());	// 적립금
+		if(policyRes.isPresent()) {
+			Policy depositPolicy = policyRes.get();
+			return Integer.parseInt(depositPolicy.getValue());
+		}
+		return 1;	// 프로그램으로 정한 값
+	}
+
 	private void storeImageFiles(UploadProductForm form) {
 		Product main = Product.builder().pid(form.getPid()).build();
 		// MultipartFile pclist 저장
@@ -148,19 +213,7 @@ public class ProductServiceImpl implements ProductService {
 //        );
         PageResultDTO<ProductDTO, Object[]> resp = new PageResultDTO<>(result, fn);
         for(ProductDTO dto : resp.getDtoList()) {
-			if(dto.getDeposit() == -1) {	// 기본 적립금
-				log.info("PolicyCode.PURCHASE_POINT.ordinal()=" + PolicyCode.PURCHASE_POINT.ordinal());
-				Optional<Policy> policyRes = policyRepository.findById(PolicyCode.PURCHASE_POINT.ordinal());	// 적립금
-				if(policyRes.isPresent()) {
-					Policy depositPolicy = policyRes.get();
-					String value = depositPolicy.getValue();
-					dto.setDeposit(dto.getSalePrice() * Integer.parseInt(value) / 100);
-				} else {	// error 처리
-					
-				}
-			} else {
-				dto.setDeposit(dto.getSalePrice() * dto.getDeposit() / 100);
-			}
+			dto.setDeposit(dto.getSalePrice() * dto.getDeposit() / 100);
         }
         resp.setTotal(total);
         return resp;

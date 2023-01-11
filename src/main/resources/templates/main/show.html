@@ -17,92 +17,63 @@
 		<p>| 메인 상품 관리 > 1열 상품</p>
 		<h2>1열 상품 관리</h2>
 		<hr>
+		<form action="/main/save" method="post">
+			<input type="hidden" name="kind" value="${kind}">
+			<input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
 		<div>
-			<input type="text" placeholder="제목을 입력하세요!" name="title">
+			<input type="text" placeholder="제목을 입력하세요!" name="title" style="width: 99%;" th:value="${(dto == null)? '' : dto.title}">
 		</div>
 		<div>
+		<th:block th:if="${dto == null}">
 			<input type="radio" id="d1" name="display" value="1">&nbsp;<label for="d1">스타일 숍 상품 등록순</label><br>
 			<input type="radio" id="d2" name="display" value="2">&nbsp;<label for="d2">스타일 숍 최근 7일간 조회수 높은순</label><br>
 			<input type="radio" id="d3" name="display" value="3">&nbsp;<label for="d3">관리자 선택</label>
+		</th:block>
+		<th:block th:if="${dto != null}">
+			<input type="radio" id="d1" name="display" th:selected="${(dto.display==1)? 'selected' : ''}" value="1">&nbsp;<label for="d1">스타일 숍 상품 등록순</label><br>
+			<input type="radio" id="d2" name="display" th:selected="${(dto.display==2)? 'selected' : ''}" value="2">&nbsp;<label for="d2">스타일 숍 최근 7일간 조회수 높은순</label><br>
+			<input type="radio" id="d3" name="display" th:selected="${(dto.display==3)? 'selected' : ''}" value="3">&nbsp;<label for="d3">관리자 선택</label>
+		</th:block>
+		
 		</div>
-		<div>
-			<table style="width: 100%">
-				<tr>
-					<th>선택</th>
-					<th>자리 번호</th>
-					<th>카테고리와 상품명</th>
-					<th>판매가격<br>(적립금)</th>
-					<th>조회수</th>
-					<th>수정</th>
+		<div id="mdArea">
+			<table style="display:none;">
+				<tr class="title">
+					<th style="width: 10%;">선택</th>
+					<th style="width: 15%;">자리 번호</th>
+					<th style="width: 40%;">카테고리와 상품명</th>
+					<th style="width: 15%;">판매가격<br>(적립금)</th>
+					<th style="width: 10%;">조회수</th>
+					<th style="width: 10%;">수정</th>
 				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb1"></td>
-					<td>1</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb2"></td>
-					<td>2</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb3"></td>
-					<td>3</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb4"></td>
-					<td>4</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb5"></td>
-					<td>5</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb6"></td>
-					<td>6</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb7"></td>
-					<td>7</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb8"></td>
-					<td>8</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb9"></td>
-					<td>9</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" id="cb10"></td>
-					<td>10</td>
-					<td colspan="3">선택된 상품이 없습니다.</td>
-					<td><button type="button">추가</button></td>
+				<tr th:each="num : ${#numbers.sequence(1,10)}">
+					<td class="center"><input type="checkbox" th:id="'cb' + ${num}"></td>
+					<td class="center">
+						<input type="hidden" th:name="'list[' + ${num} + '].position'" th:value="${num}">
+						<span th:text="${num}"></span>
+					</td>
+					<td colspan="3" th:if="${dto == null || dto.list.get(numStat.index) == null}">선택된 상품이 없습니다.</td>
+					<td th:if="${dto != null && dto.list.get(numStat.index) != null}">
+						[<span th:text="${dto.list.get(numStat.index).product.c2_name}"></span>]<br>
+						<span th:text="${dto.list.get(numStat.index).product.name}"></span>
+					</td>
+					<td th:if="${dto != null && dto.list.get(numStat.index) != null}">
+						<span th:text="${dto.list.get(numStat.index).product.price}"></span><br>
+						()<span th:text="${dto.list.get(numStat.index).product.depositFee}"></span>원)
+					</td>
+					<td th:if="${dto != null && dto.list.get(numStat.index) != null}" th:text="${dto.list.get(numStat.index).product.readCount}"></td>
+					<td th:if="${dto == null || dto.list.get(numStat.index) == null}" class="center"><button class="sequence" data-oper="add" th:data-position="${num}" type="button">추가</button></td>
+					<td th:if="${dto != null && dto.list.get(numStat.index) != null}" class="center"><button class="sequence" data-oper="modify" th:data-position="${num}" type="button">수정</button></td>
 				</tr>
 			</table>
 		</div>
-		<div>
-			<button type="button">선택 삭제</button>
-			<span>
+		<div style="margin-bottom: 10px;">
+			<button class="sequence" data-oper="remove" type="button">선택 삭제</button>
+			<span style="margin-left: 35%;">
 				<input type="submit" value="저장">&nbsp;<input type="button" value="취소">
 			</span>
 		</div>
+		</form>
 	</section>	
 </div>
     </th:block>
