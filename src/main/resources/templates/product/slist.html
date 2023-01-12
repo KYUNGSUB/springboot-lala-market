@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<th:block th:replace="~{./layout/abasic :: setContent(~{this::content} )}">
+    <th:block th:fragment="content">
+<link rel="stylesheet" th:href="@{/css/product/list.css}">
+<script type="text/javascript" th:src="@{/js/product/list.js}"></script>
+<div id="main-wrap">
+	<aside>
+		<h4>상품 관리</h4>
+		<ul>
+			<li><a href="1">상품 등록</a></li>
+			<li><a href="2">상품 리스트</a></li>
+			<li><a href="3">카테고리 관리</a></li>
+		</ul>
+	</aside>
+	<section id="main-sec">
+		<p class="p1">| 상품 관리 > 상품 리스트 > 스타일 숍</p>
+		<h2>| 스타일 숍 상품 리스트</h2>
+		<form action="list" method="get" name="search">
+			<input type="hidden" name="pageNum" th:value="${result.page}">
+			<input type="hidden" name="amount" th:value="${result.size}">
+		<div id="searchArea">
+			<div>
+				<select name="type">
+					<option th:selected="${productPageRequestDTO.type == null}">-</option>
+					<option value="name" th:selected="${productPageRequestDTO.type =='name'}">상품명</option>
+					<option value="regid" th:selected="${productPageRequestDTO.type =='regid'}">등록ID</option>
+				</select>&nbsp;
+				<input type="text" name="keyword" th:value="${productPageRequestDTO.keyword}" placeholder="검색어를 입력하세요">
+			</div>
+			<div>
+				<a id="showBtn" href="#">상세 검색</a> &nbsp; <span><a id="closeBtn" href="#">닫기</a></span>
+			</div>
+			<hr>
+			<table>
+				<tr>
+					<td>
+						카테고리 선택
+						<select name="category1">
+							<option value="" data-oper="">1차 선택</option>
+						</select>
+						<select name="category2">
+							<option value="" data-oper="">2차 선택</option>
+						</select>
+					</td>
+					<td>
+						판매 가격&nbsp;<input type="text" size="10" name="priceFrom">원 ~ 
+						<input type="text" size="10" name="priceTo">원
+					</td>
+				</tr>
+				<tr>
+					<td>
+						상품 등록일 <input type="date" name="regFrom">&nbsp; ~ &nbsp;<input type="date" name="regTo">
+					</td>
+					<td>
+						진열 여부 &nbsp; 
+						<label><input type="checkbox" name="exposeArr" value="진열">진열</label>&nbsp;
+						<label><input type="checkbox" name="exposeArr" value="품절">품절</label>&nbsp;
+						<label><input type="checkbox" name="exposeArr" value="숨김">숨김</label>
+					</td>
+				</tr>
+			</table>
+			<p><input type="submit" value="검색"></p>
+		</div>
+		</form>
+		<div id="pArea">
+			<div th:if="${#lists.isEmpty(result.dtoList)}">
+				<p>등록된 상품이 없습니다.</p>
+			</div>
+			<th:block th:if="${!#lists.isEmpty(result.dtoList)}">
+			<div>
+				<h4>총 등록 상품 : [[${result.total}]]개 / 검색된 상품 : [[${result.criTotal}]]개</h4>
+			</div>
+			<div>
+				<table>
+					<tr>
+						<th>선택</th>
+						<th>번호</th>
+						<th>카테고리와 상품명</th>
+						<th>판매 가격<br>(적립금)</th>
+						<th>상태</th>
+						<th>등록일<br>(수정일)</th>
+						<th>아이디</th>
+						<th>조회수</th>
+						<th>수정</th>
+					</tr>
+					<tr th:each="product : ${result.dtoList}">
+						<td><input type="checkbox" class="boxBtn"></td>
+						<td>[[${product.pid}]]</td>
+						<td>[[${product.c2_name}]]<br><a href="#">[[${product.name}]]</a></td>
+						<td>[[${product.salePrice}]]<br>([[${product.deposit}]])</td>
+						<td>[[${product.expose}]]</td>
+						<td>
+							[[${#temporals.format(product.regDate, 'yyyy/MM/dd')}]]<br>
+							([[${#temporals.format(product.modDate, 'yyyy/MM/dd')}]])
+						</td>
+						<td>[[${product.register_userid}]]</td>
+						<td>[[${product.readCount}]]</td>
+						<td><input type="button" value="수정" th:onclick="location.href='@{/product/update?pid=${product.pid}}'"></td>
+					</tr>
+				</table>
+			</div>
+			<div><input type="button" name="remove" value="삭제">&nbsp;
+				<input type="button" name="show" value="진열">&nbsp;
+				<input type="button" name="hide" value="숨김">&nbsp;
+				<input type="button" name="out" value="품절">
+			</div>
+			<div>
+				<p id="pagingArea">
+				<a th:if="${result.prev}" th:href="${result.start - 1}">&lt;이전</a>&nbsp;|
+				<a th:each="num: ${result.pageList}"
+					th:class="${num == result.page} ? 'on' : ''" th:href="${num}" th:text="'['+${num}+']'"></a>
+				| 
+				<a th:if="${result.next}" th:href="${result.end  + 1}" th:text="다음&gt;"></a>
+				</p>
+			</div>
+			</th:block>
+		</div>
+	</section>
+</div>
+    </th:block>
+</th:block>

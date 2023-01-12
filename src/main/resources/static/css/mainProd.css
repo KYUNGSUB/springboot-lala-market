@@ -116,3 +116,6 @@ form > div {
 .modal-dialog table {
 	width: 100%;
 }
+.modal-dialog table tbody {
+	height: 225px;
+}

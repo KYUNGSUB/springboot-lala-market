@@ -49,9 +49,10 @@ public class ProductController {
 		model.addAttribute("result", productService.getList(productPageRequestDTO));
 	}
 	
+	// 메인 화면 상품 등록 팝업창에서 상품 검색에 대한 응답
 	@GetMapping("/slist")
 	public void styleList(ProductPageRequestDTO requestDTO, Model model) {
-		log.info("list: " + requestDTO);
+		log.info("slist: " + requestDTO);
 		model.addAttribute("result", productService.getList(requestDTO));
 	}
 }

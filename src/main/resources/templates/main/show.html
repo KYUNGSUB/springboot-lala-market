@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:replace="~{./layout/abasic :: setContent(~{this::content} )}">
     <th:block th:fragment="content">
 <link rel="stylesheet" th:href="@{/css/mainProd.css}">
@@ -88,16 +88,16 @@
                         <div>
                         	<select name="c2_code">
                         		<option value="">카테고리 선택</option>
-								<option value="0010010">Outer</option>
-								<option value="0010020">Top</option>
-								<option value="0010030">Bottom</option>
-								<option value="0010040">Skirt</option>
-								<option value="0010050">Dress</option>
+                        		<th:block th:each="category : ${cList}">
+								<option th:value="${category.code}" th:text="${category.name}"></option>
+								</th:block>
 							</select>
-							<input type="text" name="name" size="45" placeholder="상품명을 입력하세요.">
-                        	<button>검색</button>
+							<input type="text" name="name" size="43" placeholder="상품명을 입력하세요.">
+                        	<button type="button" id="searchBtn">검색</button>
                         </div>
+                        <div id="productArea">
                         <table style="margin-top: 5px;">
+                        	<thead>
 							<tr class="title">
 								<th style="width: 9%;">선택</th>
 								<th style="width: 9%;">번호</th>
@@ -105,6 +105,12 @@
 								<th style="width: 16%;">판매가격<br>(적립금)</th>
 								<th style="width: 14%;">조회수</th>
 							</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td colspan="5" rowspan="5" style="vertical-align: middle;">검색된 상품이 없습니다. 상품을 검색하세요.</td>
+							</tr>
+							<!-- 
 							<tr th:each="num : ${#numbers.sequence(1,5)}">
 								<td class="center"><input type="checkbox" th:id="'cb' + ${num}"></td>
 								<td class="center">
@@ -121,7 +127,10 @@
 								</td>
 								<td>126</td>
 							</tr>
+							 -->
+							</tbody>
 						</table>
+                        </div>
                     </div>
                     <div class="modal-footer" style="margin-top: 5px;">
                         <button type="button" class="btn btn-primary">상품 선택</button>
